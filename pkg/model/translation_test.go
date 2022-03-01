@@ -128,6 +128,11 @@ services:
 				MountPath: "/path",
 				SubPath:   path.Join(SourceCodeSubPath, "sub"),
 			},
+			{
+				Name:      dev.GetVolumeName(),
+				MountPath: "/var/okteto/bashrc",
+				SubPath:   "okteto-bash-history",
+			},
 		},
 		InitContainer: InitContainer{Image: OktetoBinImageTag},
 		NodeSelector: map[string]string{
@@ -184,6 +189,11 @@ services:
 				Name:      dev.GetVolumeName(),
 				MountPath: "/src",
 				SubPath:   path.Join(SourceCodeSubPath, "worker"),
+			},
+			{
+				Name:      dev.GetVolumeName(),
+				MountPath: "/var/okteto/bashrc",
+				SubPath:   "okteto-bash-history",
 			},
 		},
 		Secrets: make([]Secret, 0),
@@ -260,6 +270,11 @@ initContainer:
 				Name:      dev.GetVolumeName(),
 				MountPath: "/app",
 				SubPath:   SourceCodeSubPath,
+			},
+			{
+				Name:      dev.GetVolumeName(),
+				MountPath: "/var/okteto/bashrc",
+				SubPath:   "okteto-bash-history",
 			},
 		},
 		InitContainer: InitContainer{
@@ -375,6 +390,11 @@ docker:
 				MountPath: "/app",
 				SubPath:   SourceCodeSubPath,
 			},
+			{
+				Name:      dev.GetVolumeName(),
+				MountPath: "/var/okteto/bashrc",
+				SubPath:   "okteto-bash-history",
+			},
 		},
 		InitContainer: InitContainer{Image: OktetoBinImageTag},
 		Docker: DinDContainer{
@@ -447,6 +467,11 @@ sync:
 				Name:      dev.GetVolumeName(),
 				MountPath: "/app",
 				SubPath:   SourceCodeSubPath,
+			},
+			{
+				Name:      dev.GetVolumeName(),
+				MountPath: "/var/okteto/bashrc",
+				SubPath:   "okteto-bash-history",
 			},
 		},
 		InitContainer: InitContainer{Image: OktetoBinImageTag},
